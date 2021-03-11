@@ -46,7 +46,7 @@ jobs:
       with:
         builder: ${{ steps.buildx.outputs.name }}
         push: false
-        tags: akshay7777/hello-go:latest,akshay7777hello-go:${{ github.sha }},akshay7777/hello-go:${{ steps.vars.outputs.version }}
+        tags: akshay7777/hello-go:${{ github.sha }}
 
     - name: Run Trivy vulnerability scanner
       uses : aquasecurity/trivy-action@master
