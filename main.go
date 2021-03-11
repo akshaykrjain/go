@@ -2,31 +2,44 @@ package main
 
 import (
 	"fmt"
+	"testing"
 )
 
-func add_values(a int, b int) int {
-
-	var c = a + b
-
-	return c
+func IntMin(a, b int) int {
+	if a < b {
+		return a
+	}
+	return b
 }
 
-func main() {
+func TestIntMinBasic(t *testing.T) {
+	ans := IntMin(2, -2)
+	if ans != -2 {
 
-	var a = 4
+		t.Errorf("IntMin(2, -2) = %d; want -2", ans)
+	}
+}
 
-	var b = 10
+func TestIntMinTableDriven(t *testing.T) {
+	var tests = []struct {
+		a, b int
+		want int
+	}{
+		{0, 1, 0},
+		{1, 0, 0},
+		{2, -2, -2},
+		{0, -1, -1},
+		{-1, 0, -1},
+	}
 
-	var c = add_values(a, b)
+	for _, tt := range tests {
 
-	fmt.Printf("Sum: %d \n", c)
-
-	a = 5
-
-	b = -2
-
-	c = add_values(a, b)
-
-	fmt.Printf("Sum: %d \n", c)
-
+		testname := fmt.Sprintf("%d,%d", tt.a, tt.b)
+		t.Run(testname, func(t *testing.T) {
+			ans := IntMin(tt.a, tt.b)
+			if ans != tt.want {
+				t.Errorf("got %d, want %d", ans, tt.want)
+			}
+		})
+	}
 }
