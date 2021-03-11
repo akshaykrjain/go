@@ -49,7 +49,7 @@ jobs:
         tags: akshay7777/hello-go:latest,${{ steps.vars.outputs.version }}
 
     - name: Push Docker Image
-      id: docker_build
+      id: docker_push
       if: github.ref == 'refs/heads/master' && github.event_name == 'push'
       uses: docker/build-push-action@v2
       with:
