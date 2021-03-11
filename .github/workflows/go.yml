@@ -10,8 +10,8 @@ jobs:
 
   build:
     runs-on: ubuntu-latest
+
     steps:
-    - uses: actions/checkout@v2
 
     - name: Set up Go
       uses: actions/setup-go@v2
@@ -46,7 +46,7 @@ jobs:
           ${{ runner.os }}-buildx-
 
     - name: Build
-      run: go build -o /tmp/.buildx-cache/hello -v ./... 
+      run: go build -o hello -v ./... 
 
     - name: Test
       run: go test -v ./...
@@ -59,4 +59,4 @@ jobs:
       with:
         builder: ${{ steps.buildx.outputs.name }}
         push: true
-        tags: akshay7777/hello-go:latest 
+        tags: akshay7777/hello-go:latest
