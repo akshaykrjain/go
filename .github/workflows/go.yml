@@ -42,7 +42,7 @@ jobs:
 
     - name: Build Docker Image
       id: docker_build
-      if: github.ref == 'refs/heads/master' && github.event_name == 'pull_request'
+      if: github.event_name == 'pull_request'
       uses: docker/build-push-action@v2
       with:
         builder: ${{ steps.buildx.outputs.name }}
