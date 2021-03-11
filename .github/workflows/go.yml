@@ -18,11 +18,6 @@ jobs:
       with:
         go-version: 1.16
 
-    - name: Build
-      run: go build -o hello -v ./... ; pwd ; ls
-
-    - name: Test
-      run: go test -v ./...
 
     - name: Login to DockerHub
       id: docker_login
@@ -50,12 +45,18 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-buildx-
 
+    - name: Build
+      run: go build -o /tmp/.buildx-cache/hello -v ./... 
+
+    - name: Test
+      run: go test -v ./...
+
+
     - name: Build and Push the docker Image
       id: docker_build
       if: github.ref == 'refs/heads/master' && github.event_name == 'push'
       uses: docker/build-push-action@v2
       with:
         builder: ${{ steps.buildx.outputs.name }}
-        context: .
         push: true
         tags: akshay7777/hello-go:latest 
