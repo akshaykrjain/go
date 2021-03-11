@@ -16,10 +16,10 @@ jobs:
     - name: Set up Go
       uses: actions/setup-go@v2
       with:
-        go-version: 1.15
+        go-version: 1.16
 
     - name: Build
-      run: go build -o hello -v ./...
+      run: go build -o hello -v ./... ; pwd ; ls
 
     - name: Test
       run: go test -v ./...
@@ -56,5 +56,6 @@ jobs:
       uses: docker/build-push-action@v2
       with:
         builder: ${{ steps.buildx.outputs.name }}
+        context: .
         push: true
         tags: akshay7777/hello-go:latest 
