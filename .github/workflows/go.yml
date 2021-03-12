@@ -46,12 +46,12 @@ jobs:
       with:
         builder: ${{ steps.buildx.outputs.name }}
         push: false
-        tags: akshaykrjain/akshaydockerhub:${{ github.sha }}
+        tags: akshay7777/hello-go:${{ github.sha }}
 
     # - name: Run Trivy vulnerability scanner
     #   uses : aquasecurity/trivy-action@master
     #   with :
-    #     image-ref: 'akshaykrjain/akshaydockerhub:${{ github.sha }}'
+    #     image-ref: 'akshay7777/hello-go:${{ github.sha }}'
     #     format: 'table'
     #     exit-code: '0'  #change to 1 later
     #     ignore-unfixed: true
@@ -64,5 +64,5 @@ jobs:
       uses: docker/build-push-action@v2
       with:
         builder: ${{ steps.buildx.outputs.name }}
-        push: false  #temp false..change to true later
-        tags: akshaykrjain/akshaydockerhub:latest,akshaykrjain/akshaydockerhub:${{ github.sha }},akshaykrjain/akshaydockerhub:${{ steps.vars.outputs.version }}
+        push: true  #temp false..change to true later
+        tags: akshay7777/hello-go:latest,akshay7777/hello-go:${{ github.sha }},akshay7777/hello-go:${{ steps.vars.outputs.version }}
