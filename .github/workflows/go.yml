@@ -34,7 +34,7 @@ jobs:
         password: ${{ secrets.DOCKERHUB_TOKEN }}
 
     - name: Get version
-      id: vars
+      id: get_version
       run: echo ::set-output name=version::v-$(cat VERSION.txt).$GITHUB_RUN_NUMBER
     
     - name: Show Version
