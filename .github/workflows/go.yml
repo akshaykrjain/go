@@ -38,7 +38,7 @@ jobs:
       run: echo ::set-output name=version::v-$(cat VERSION.txt).$GITHUB_RUN_NUMBER
     
     - name: Show Version
-      run: echo ${{ steps.vars.outputs.version }}
+      run: echo ${{ steps.get_version.outputs.version }}
 
     - name: Build Docker Image
       id: docker_build
