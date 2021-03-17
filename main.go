@@ -9,6 +9,6 @@ func add(x int, y int) int {
 }
 
 func main() {
-	fmt.Println("Hello from Akshay Jain!!!")
+	fmt.Println("Hello from Akshay Jain!!")
 	fmt.Println(add(42, 15))
 }
