@@ -65,4 +65,4 @@ jobs:
       with:
         builder: ${{ steps.buildx.outputs.name }}
         push: true  
-        tags: akshaykrjain/test_private:${{ steps.get_version.outputs.version }}
+        tags: akshaykrjain/test_private:${{ steps.get_version.outputs.version }} , akshaykrjain/test_private:latest
